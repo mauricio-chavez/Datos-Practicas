@@ -19,6 +19,8 @@ public class Vector<T> {
      */
     public Vector() {
         buffer = new Object[INC];
+        for(int i=0;i<INC;i++)
+            buffer[i] = null;
     }
     
     /// MÉTODOS DE ACCESO
@@ -32,13 +34,13 @@ public class Vector<T> {
      */
     public T lee(int i) {
         T e = null;
+        if(i<0 || i>=this.leeCapacidad())
+                throw new IndexOutOfBoundsException("No existe este indice en el Vector");
         try{
             e = (T) (buffer[i]);
         }catch(ClassCastException exc){
-            System.out.println("El objeto no es de tipo T");
+            System.out.println("El objeto no es del tipo especificado");
         }
-        if(i<=0 || i>this.leeCapacidad())
-                throw new IndexOutOfBoundsException("No existe este indice en el Vector");
         return e;
     }
     
@@ -61,7 +63,7 @@ public class Vector<T> {
      *         <code>!(0 &lt;= i &lt; this.leeCapacidad()) </code>.
      */
     public void asigna(int i, T e) {
-        if(i<=0 || i>this.leeCapacidad())
+        if(i<0 || i>=this.leeCapacidad())
             throw new IndexOutOfBoundsException("No existe este indice en el Vector");
         buffer[i] = e;
     }
@@ -76,18 +78,25 @@ public class Vector<T> {
      *          cero.
      * @throws IllegalSizeException si <code>n &lt; 1</code>.
      */
-    public void asignaCapacidad(int n) {
+    public void asignaCapacidad(int n) throws IllegalSizeException{
         if(n<1)
             throw new IllegalSizeException("La capacidad debe ser mayor a cero");
         Object temp[] = new Object[n];
-        for(int i=0;i<n;i++){
-            temp[i] = this.buffer[i];
+
+        if(n<this.leeCapacidad()){
+        	for(int i=0;i<n;i++)
+           	 temp[i] = this.buffer[i];
+           	buffer = temp;
         }
-        if(n>this.leeCapacidad())
-            for(int i=this.leeCapacidad();i<n;i++){
+
+        else if(n>this.leeCapacidad()){
+        	for(int i=0;i<this.leeCapacidad();i++)
+            	temp[i] = this.buffer[i];
+			for(int i=this.leeCapacidad();i<n;i++)
                 temp[i] = null;
-            }
-        buffer = temp;
+            buffer = temp;
+        }
+            
     }
     
     /**
@@ -101,11 +110,7 @@ public class Vector<T> {
      */
     public void aseguraCapacidad(int n) {
         if(n>this.leeCapacidad()){
-            try{
-                this.asignaCapacidad(n+5);
-            }catch(IndexOutOfBoundsException e){
-                System.out.println("n no puede ser menor a cero");//ME FALTAN COSAS
-            }
+        	this.asignaCapacidad(n*n);
         }
     }
 }
