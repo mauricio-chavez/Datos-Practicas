@@ -5,6 +5,8 @@
  */
 package ed.complejidad;
 
+import java.io.*;
+
 /**
  * Interfaz que define los métodos para utilizar con las pruebas unitarias.
  */
@@ -30,10 +32,25 @@ public interface IComplejidad{
 	 * @param ops número de operaciones realizadas.
      */
     public static void escribeOperaciones(String archivo, int par, int ops) {
-    	String a = archivo;
-    	int p = par;
-    	int operaciones = ops;
+        FileWriter fichero = null;
+        PrintWriter escritor = null;
+        try
+        {
+            fichero = new FileWriter(archivo,true);
+            escritor = new PrintWriter(fichero);
 
+            escritor.println(par + " " + ops);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+           try {
+               if (null != fichero)
+                  fichero.close();
+           }catch(Exception e2){
+              e2.printStackTrace();
+           }
+        }
     }
 
     /**
@@ -47,12 +64,25 @@ public interface IComplejidad{
 	 * @param ops número de operaciones realizadas.
      */
     public static void escribeOperaciones(String archivo, int par1, int par2, int ops) {
-    	String a = archivo;
-    	int p1 = par1;
-    	int p2= par2;
-    	int operaciones = ops;
+    	FileWriter fichero = null;
+        PrintWriter escritor = null;
+        try
+        {
+            fichero = new FileWriter(archivo,true);
+            escritor = new PrintWriter(fichero);
 
+            escritor.println(par1 + " " + par2 + " " + ops);
 
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+           try {
+               if (null != fichero)
+                  fichero.close();
+           }catch(Exception e2){
+              e2.printStackTrace();
+           }
+        }
     }
 
 
