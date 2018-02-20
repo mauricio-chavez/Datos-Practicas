@@ -78,25 +78,25 @@ public class Vector<T> {
      *          cero.
      * @throws IllegalSizeException si <code>n &lt; 1</code>.
      */
-    public void asignaCapacidad(int n) throws IllegalSizeException{
+    public void asignaCapacidad(int n) {
         if(n<1)
             throw new IllegalSizeException("La capacidad debe ser mayor a cero");
-        Object temp[] = new Object[n];
 
         if(n<this.leeCapacidad()){
+        	Object temp[] = new Object[n];
         	for(int i=0;i<n;i++)
            	 temp[i] = this.buffer[i];
            	buffer = temp;
         }
 
         else if(n>this.leeCapacidad()){
+        	Object temp[] = new Object[n];
         	for(int i=0;i<this.leeCapacidad();i++)
             	temp[i] = this.buffer[i];
 			for(int i=this.leeCapacidad();i<n;i++)
                 temp[i] = null;
             buffer = temp;
         }
-            
     }
     
     /**
@@ -109,8 +109,17 @@ public class Vector<T> {
      *          no puede ser menor a cero.
      */
     public void aseguraCapacidad(int n) {
-        if(n>this.leeCapacidad()){
-        	this.asignaCapacidad(n*n);
+        if(n<=INC) {
+            this.asignaCapacidad(INC);
+        }
+
+        else {
+            double n2 = this.leeCapacidad();
+            double i = Math.log((n2*n2)/INC)/Math.log(2);
+            int nuevaCapacidad;
+
+            nuevaCapacidad = (int) Math.ceil(Math.pow(2,i) * INC);
+            this.asignaCapacidad(nuevaCapacidad);
         }
     }
 }
