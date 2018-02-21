@@ -34,13 +34,11 @@ public interface IComplejidad{
     public static void escribeOperaciones(String archivo, int par, int ops) {
         FileWriter fichero = null;
         PrintWriter escritor = null;
-        try
-        {
+        try{
             fichero = new FileWriter(archivo,true);
             escritor = new PrintWriter(fichero);
 
             escritor.println(par + " " + ops);
-
         }catch(Exception e){
             e.printStackTrace();
         }finally{

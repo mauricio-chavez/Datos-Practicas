@@ -10,49 +10,11 @@ package ed.complejidad;
  */
 public class Complejidad implements IComplejidad{
 	private static int operaciones;
-	private String archivo;
 	/**
-	*Constructor por omisión
-	*/
+	 * Constructor por omisión
+	 */
 	public Complejidad(){
 		this.operaciones = 0;
-		this.archivo = null;
-	}
-	/**
-	*Constructor que asigna las operaciones y los archivos
-	*/
-	public Complejidad(int ops, String arch){
-		asignarOperaciones(ops);
-		asignarArchivo(arch);
-	}
-
-	/**
-	*Método para asignar operaciones
-	*@param ops- operaciones a asignar
-	*/
-	public void asignarOperaciones(int ops){
-		operaciones = ops;
-	}
-	/**
-	*Metodo para asignar archivo
-	*@param arch - archivo a asignar
-	*/
-	public void asignarArchivo(String arch){
-		archivo = arch;
-	}
-	/**
-	*Método para obtener operaciones
-	*@return operaciones - operaciones
-	*/
-	public  int obtenerOperaciones(){
-		return operaciones;
-	}
-	/**
-	*Método para obtener archivo
-	*@return archivo - archivo
-	*/
-	public  String obtenerArchivo(){
-		return archivo;
 	}
 	
 	/**
@@ -89,20 +51,13 @@ public class Complejidad implements IComplejidad{
     	else if(j>i)
     		throw new IndexOutOfBoundsException("El indice j no puede ser mayor al indice i");
 
-    	if(j==i || j==0)
-    		return 1;
+    	if(j==i || j==0){
+            return 1;
+        }
     	else{
     		this.operaciones++;
     		return tPascalRec(i-1,j-1) + tPascalRec(i-1,j);
     	}
-
-		/* if (i < 0 || j < 0 || j > i)
-			throw new IllegalArgumentException("No puede ser menor a 0");
-		if ( j == 0 || j == 1)
-			return 1;
-		else 
-			return tPascalRec(i - 1, j+1) + tPascalRec(i - 1);
-			*/
 
 	}
 
@@ -127,50 +82,35 @@ public class Complejidad implements IComplejidad{
     	int jFact = j;
     	int ijFact = i-j;
 
-    	for(int k=i-1;k>1;k--){
-    		iFact*= k;
-    		this.operaciones++;
-    	}
+        if(iFact==0)
+            iFact=1;
+        else
+            for(int k=i-1;k>1;k--){
+                iFact*= k;
+                this.operaciones++;
+            }
+        
 
-    	for(int k=j-1;k>1;k--){
-    		jFact*= k;
-    		this.operaciones++;
-    	}
+        if(jFact==0)
+            jFact=1;
+        else
+            for(int k=j-1;k>1;k--){
+                jFact*= k;
+                this.operaciones++;
+            }
+        
 
-    	for(int k=ijFact-1;k>1;k--){
-    		ijFact*= k;
-    		this.operaciones++;
-    	}
+        if(ijFact==0)
+            ijFact=1;
+        else
+            for(int k=ijFact-1;k>1;k--){
+                ijFact*= k;
+                this.operaciones++;
+            }
+        
 
     	return iFact/(jFact*ijFact);
     }
-
-    /*if (j < 0 || j > i) {
-        return 0;
-    }
-
-    if (j == 0 || j == i) {
-        return 1;
-    }
-
-    int[] filaAnterior = {1, 1};
-
-    for (int n = 2; n < i; n++) {
-        int[] filaActual = new int[n+1];
-        for (int m = 0; m <= i; m++) {
-            if (m == 0 || m == i) {
-                filaActual[m] = 1;
-                continue;
-            }
-
-            filaAnterior[m] = filaAnterior[m-1] + filaAnterior[m];
-        }
-        filaAnterior = filaActual;
-    }
-
-    return filaAnterior[j - 1] + filaAnterior[j];
-}*/
-
 	
 	/**
      * Devuelve el n-esimo elemento, calculado de forma recursiva,
@@ -222,23 +162,5 @@ public class Complejidad implements IComplejidad{
 
     		return nMenos1 + nMenos2;
     	}
-    }
-		/*int x, y, z;
-
-    if(n == 0){
-        return 0;
-    }
-    else{
-        x = 1;
-        y = 1;
-
-        for(int i = 3; i <=n; i++){
-            z = x+y;       
-            x = y;      
-            y = z;      
-            this.operaciones++;        
-        }
-    }
-}
-    return y;*/  	
+    }	
 }

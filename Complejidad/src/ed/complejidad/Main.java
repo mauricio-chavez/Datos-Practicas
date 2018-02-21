@@ -34,6 +34,7 @@ public class Main{
 		IComplejidad.escribeOperaciones("datosPascalIterativo.dat",i,j,comp.leeContador());
 		comp.reiniciaContador();
 
+
 		System.out.println("\nSucecion de Fibonacci recursiva:\n");
 		System.out.print("\tIntroduce el indice del elemento que deseas calcular: ");
 		n = io.nextInt();
