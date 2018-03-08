@@ -1,5 +1,5 @@
 Testsuite: ed.estructuras.ColeccionAbstractaTest
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,493 sec
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,245 sec
 ------------- Standard Output ---------------
 
 Revisando metodo clear...Correcto
@@ -11,17 +11,17 @@ Revisando metodo addAll...Correcto
 Revisando metodo remove...Correcto
 Revisando metodo removeAll...Correcto
 Revisando metodo retainAll random...Antes: {0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19}
-Dejar: [18, 15, 16, 9, 10, 11, 3, 13, 10, 7]
-Después: {3 7 9 10 11 13 15 16 18}
+Dejar: [13, 18, 1, 19, 3, 8, 14, 1, 17, 0]
+Después: {0 1 3 8 13 14 17 18 19}
+Buscando 0
+Buscando 1
 Buscando 3
-Buscando 7
-Buscando 9
-Buscando 10
-Buscando 11
+Buscando 8
 Buscando 13
-Buscando 15
-Buscando 16
+Buscando 14
+Buscando 17
 Buscando 18
+Buscando 19
 Correcto
 Revisando metodo toArray sin argumentos...Correcto
 ==============================
@@ -29,13 +29,13 @@ Calificación automática: 10.0
 ==============================
 ------------- ---------------- ---------------
 
-Testcase: testClear took 0,065 sec
-Testcase: testToArray_GenericType took 0,015 sec
-Testcase: testRetainAll took 0,028 sec
-Testcase: testContainsAll took 0,018 sec
+Testcase: testClear took 0,063 sec
+Testcase: testToArray_GenericType took 0,01 sec
+Testcase: testRetainAll took 0,024 sec
+Testcase: testContainsAll took 0,026 sec
 Testcase: testContains took 0,005 sec
-Testcase: testAddAll took 0,006 sec
-Testcase: testRemove took 0,004 sec
-Testcase: testRemoveAll took 0,016 sec
-Testcase: testRetainAllRandom took 0,048 sec
-Testcase: testToArray_0args took 0,006 sec
+Testcase: testAddAll took 0,008 sec
+Testcase: testRemove took 0,003 sec
+Testcase: testRemoveAll took 0,014 sec
+Testcase: testRetainAllRandom took 0,047 sec
+Testcase: testToArray_0args took 0,004 sec

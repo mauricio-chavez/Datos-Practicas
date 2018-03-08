@@ -7,56 +7,58 @@ import java.lang.reflect.Array;
 
 public abstract class ColeccionAbstracta<E> implements Collection<E>{
    
-   private Object[] buffer;
-   private int size;
-
    	/**
-	*Método que verifica si un elemento especifico de la coleccion se encuentra
-	*@param o - Elemento que se verificara que se encuentra en la coleccion
-	*@throws ClassCastException - Si el tipo del elemento especifico es imcompatible con la coleccion
-	*@throws NullPointerException - Si el elemento espeficado es null y la coleccion no permite elementos null.
-	*@return boolean- True si el elemento se encunetra en la coleccion, false en otro caso.
-	*/
+	 * Método que verifica si un elemento especifico de la coleccion se encuentra
+	 * @param o - Elemento que se verificara que se encuentra en la coleccion
+	 * @throws ClassCastException - Si el tipo del elemento especifico es imcompatible con la coleccion
+	 * @throws NullPointerException - Si el elemento espeficado es null y la coleccion no permite elementos null.
+	 * @return boolean- True si el elemento se encunetra en la coleccion, false en otro caso.
+	 */
 	public boolean contains(Object o){
-		Iterator<E> it = iterator();
-		if (o==null) {
-			while (it.hasNext())
-				if (it.next()==null)
+
+		if(o==null)
+			for(Object d:this){
+				if(d==null)
 					return true;
-		} else {
-			while (it.hasNext())
-				if (o.equals(it.next()))
-					return true;
-		}
+			}
+
+		else
+			for(Object e:this){
+				if(e.equals(o))
+					return true;	
+			}
+
 		return false;
 	}
+
 	/**
-	*Método que regresa un arreglo conteniendo todos los elementos de la coleccion. Si la coleccion el orden de los elementos que se estan
-	*regresando por su iterador, este metodo debe devolver los elementos en el mismo orden.
-	*@return Array- Un arreglo que contiene todos los elementos.
-	*/
+	 * Método que regresa un arreglo conteniendo todos los elementos de la coleccion. Si la coleccion el orden de los elementos que se estan
+	 * regresando por su iterador, este metodo debe devolver los elementos en el mismo orden.
+	 * @return Array- Un arreglo que contiene todos los elementos.
+	 */
 	public Object[] toArray(){
-		Iterator<E> it = iterator();
 		Object[] buffer = new Object[this.size()];
 		int count = 0;
 
-		while(it.hasNext())
-			buffer[count++] = it.next();
+		for(E e:this){
+			buffer[count++] = e;
+		}
 
 		return buffer;
 	}
+
 	/**
-	*Método que regresa un arreglo conteniendo todos los elementos en la coleccion, el tipo tipo de tiempo de ejecución del arreglo regresedo
-	* es de ese arreglo en específico. Si la colección cabe en este arreglo específico, se va regresar este. En otro caso un nuevo arreglo
-	* se va  a colocar con el tipo de tiempo de ejecución con el arreglo específico y el tamaño de su colección.
-	*@param a - El arreglo del cual los elementos de esta coleccion seran guardados, si es lo suficientemente grande, en otro caso un nuevo 
-	*arreglo del mismo tiempo de ejecución sera colocado para su mismo proposito.
-	*@throws ArrayStoreException - Si el tiempo de ejecución del arreglo especificado no es un supertipo del tiempo de ejecución de cada 
-	*elemento de esta coleccion.
-	*@throws NullPointerException - Si el arreglo espeficado es null.
-	*@throws IllegalArgumentException - Si la longitud del arreglo es diferente de cero
-	*@return r - Arreglo que contiene todos los elementos de esta coleccion
-	*/
+	 * Método que regresa un arreglo conteniendo todos los elementos en la coleccion, el tipo tipo de tiempo de ejecución del arreglo regresedo
+	 * es de ese arreglo en específico. Si la colección cabe en este arreglo específico, se va regresar este. En otro caso un nuevo arreglo
+	 * se va  a colocar con el tipo de tiempo de ejecución con el arreglo específico y el tamaño de su colección.
+	 * @param a - El arreglo del cual los elementos de esta coleccion seran guardados, si es lo suficientemente grande, en otro caso un nuevo 
+	 * arreglo del mismo tiempo de ejecución sera colocado para su mismo proposito.
+	 * @throws ArrayStoreException - Si el tiempo de ejecución del arreglo especificado no es un supertipo del tiempo de ejecución de cada 
+	 * elemento de esta coleccion.
+	 * @throws NullPointerException - Si el arreglo espeficado es null.
+	 * @throws IllegalArgumentException - Si la longitud del arreglo es diferente de cero
+	 * @return r - Arreglo que contiene todos los elementos de esta coleccion
+	 */
 	public <T> T[] toArray(T[] a){
 		int size = size();
 	    T[] r = (a.length >= size) ? a : (T[]) Array.newInstance(a.getClass().getComponentType(), size);
@@ -76,30 +78,31 @@ public abstract class ColeccionAbstracta<E> implements Collection<E>{
 	}
 
 	/**
-	*Método que verifica  si la coleccion contiene todos los elementos en la coleccion especifica
-	*@param c - Coleccion que se checara para contencion en esta coleccion
-	*@throws ClassCastException - Si el tipo del elemento especifico es imcompatible con la coleccion
-	*@throws NullPointerException - Si el elemento espeficado es null y la coleccion no permite elementos null.
-	*@return boolean - True si la coleccion contiene todos los elementos en la coleccion especifica
-	*/
+	 * Método que verifica  si la coleccion contiene todos los elementos en la coleccion especifica
+	 * @param c - Coleccion que se checara para contencion en esta coleccion
+	 * @throws ClassCastException - Si el tipo del elemento especifico es imcompatible con la coleccion
+	 * @throws NullPointerException - Si el elemento espeficado es null y la coleccion no permite elementos null.
+	 * @return boolean - True si la coleccion contiene todos los elementos en la coleccion especifica
+	 */
 	public boolean containsAll(Collection<?> c){
-		Iterator<?> it = c.iterator();
-		while (it.hasNext())
-			if(!(this.contains(it.next())))
+		for(Object t:c){
+			if(!(this.contains(t)))
 				return false;
+		}
+
 		return true;
 	}
 
 	/**
-	*Método que agrega todos los elementos en la coleccion especifica a esta coleccion. 
-	*@param c - Coleccion que contiene los elementos que se agregaran a esta coleccion.
-	*@throws UnsupportedOperationException - Si la operacion addAll no esta soportada en esta coleccion
-	*@throws ClassCastException - Si el tipo del elemento especifico es imcompatible con la coleccion
-	*@throws NullPointerException - Si el elemento espeficado es null y la coleccion no permite elementos null.
-	*@throws IllegalArgumentException - Si alguna propiedad del elemento de la coleccion especificada previene que sea agregado 
-	*a esta coleccion.
-	*@return modificado -  modificado es igual true si la coleccion cambio debido a la operacion, false en otro caso.
-	*/
+	 * Método que agrega todos los elementos en la coleccion especifica a esta coleccion. 
+	 * @param c - Coleccion que contiene los elementos que se agregaran a esta coleccion.
+	 * @throws UnsupportedOperationException - Si la operacion addAll no esta soportada en esta coleccion
+	 * @throws ClassCastException - Si el tipo del elemento especifico es imcompatible con la coleccion
+	 * @throws NullPointerException - Si el elemento espeficado es null y la coleccion no permite elementos null.
+	 * @throws IllegalArgumentException - Si alguna propiedad del elemento de la coleccion especificada previene que sea agregado 
+	 * a esta coleccion.
+	 * @return modificado -  modificado es igual true si la coleccion cambio debido a la operacion, false en otro caso.
+	 */
 	public  boolean addAll(Collection <? extends E> c){
 		boolean changed = false;
 	    for (E e : c) 
@@ -109,25 +112,25 @@ public abstract class ColeccionAbstracta<E> implements Collection<E>{
 	}
 
 	/**
-	*Método que remueve una sola instancia del elemento especificado de esta coleccion.
-	*@param o - Elemento que sera removido de la coleccion, si esta presente
-	*@throws UnsupportedOperationException - Si la operacion addAll no esta soportada en esta coleccion
-	*@throws ClassCastException - Si el tipo del elemento especifico es imcompatible con la coleccion
-	*@throws NullPointerException - Si el elemento espeficado es null y la coleccion no permite elementos null.
-	*@return boolean - True si el elemento fue 	removido de esta coleccion, false en otro caso
-	*/
+	 * Método que remueve una sola instancia del elemento especificado de esta coleccion.
+	 * @param o - Elemento que sera removido de la coleccion, si esta presente
+	 * @throws UnsupportedOperationException - Si la operacion addAll no esta soportada en esta coleccion
+	 * @throws ClassCastException - Si el tipo del elemento especifico es imcompatible con la coleccion
+	 * @throws NullPointerException - Si el elemento espeficado es null y la coleccion no permite elementos null.
+	 * @return boolean - True si el elemento fue 	removido de esta coleccion, false en otro caso
+	 */
 	public boolean remove (Object o){
-		Iterator<E> e = iterator();
+		Iterator<E> it = iterator();
 		if (o==null) {
-			while (e.hasNext())
-				if (e.next()==null){
-					e.remove();
+			while (it.hasNext())
+				if (it.next()==null){
+					it.remove();
 					return true;
 				}
 		} else {
-			while (e.hasNext())
-				if (o.equals(e.next())){
-					e.remove();
+			while (it.hasNext())
+				if (o.equals(it.next())){
+					it.remove();
 					return true;
 				}
 		}
@@ -139,7 +142,7 @@ public abstract class ColeccionAbstracta<E> implements Collection<E>{
 		Iterator<?> it = c.iterator();
 		boolean removed = false;
 		while (it.hasNext())
-			if(!(this.remove(it.next())))
+			if(this.remove(it.next()))
 				removed = true;
 		return removed;
 	}
