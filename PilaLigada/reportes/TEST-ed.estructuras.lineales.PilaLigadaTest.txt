@@ -1,0 +1,35 @@
+Testsuite: ed.estructuras.lineales.PilaLigadaTest
+Tests run: 8, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0,045 sec
+------------- Standard Output ---------------
+expulsa
+add
+empuja null
+mira
+size
+empuja
+isEmpty
+iterator
+==============================
+Calificacion automatica: 8.181818
+==============================
+------------- ---------------- ---------------
+
+Testcase: testExpulsa took 0,004 sec
+Testcase: testAdd took 0 sec
+Testcase: testEmpujaNull took 0 sec
+Testcase: testMira took 0,001 sec
+Testcase: testSize took 0 sec
+Testcase: testEmpuja took 0 sec
+Testcase: testIsEmpty took 0 sec
+Testcase: testIterator took 0,004 sec
+	Caused an ERROR
+null
+java.lang.NullPointerException
+	at ed.estructuras.lineales.PilaLigada$Iterador.next(Unknown Source)
+	at ed.estructuras.lineales.PilaLigadaTest.testIterator(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at jdk.internal.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+
