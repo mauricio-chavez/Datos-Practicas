@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 public class PilaLigada<E> extends ColeccionAbstracta<E> implements IPila<E>{
 
-    private Nodo head;
+    private Nodo<E> head;
     private int size;
 
     public PilaLigada(){
@@ -20,7 +20,7 @@ public class PilaLigada<E> extends ColeccionAbstracta<E> implements IPila<E>{
 
     private class Iterador implements Iterator<E>{
 
-        private Nodo pos;
+        private Nodo<E> pos;
 
         public Iterador(){
             this.pos = head;
