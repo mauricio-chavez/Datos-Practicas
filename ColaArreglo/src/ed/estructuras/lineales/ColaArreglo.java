@@ -10,6 +10,14 @@ public class ColaArreglo<E> extends ColeccionAbstracta<E> implements ICola<E>{
     private int tail; 
     private int size;
 
+    /**
+     * Constructor que crea una cola en arreglo, con el tipo especificado 
+     * en el arreglo y con un tamaño inicial para el arreglo.
+     * @param a -- Arreglo del tipo de la cola. Debe ser de tamaño cero.
+     * @param tamInicial -- Tamaño del arreglo
+     * @throws IllegalArgumentException -- Cuando el tamaño del arreglo especificado en el parametro no es cero
+     * o cuando el tamaño inicial es menor o igual a cero
+     */
     public ColaArreglo(E[] a, int tamInicial){
         if(a.length!=0 || tamInicial<=0)
             throw new IllegalArgumentException("El tamaño del arreglo no puede ser diferente de cero y el tamaño inicial no puede ser cero");
@@ -19,14 +27,25 @@ public class ColaArreglo<E> extends ColeccionAbstracta<E> implements ICola<E>{
         this.size = 0;
     }
 
+    /**
+     * Constructor que crea una cola en arreglo, con el tipo especificado en el arreglo
+     * @param a -- Arreglo del tipo de la cola. Debe ser de tamaño cero.
+     * @throws IllegalArgumentException -- Cuando el tamaño del arreglo especificado en el parametro no es cero
+     */
     public ColaArreglo(E[] a){
         this(a,10);
     }
 
+    /**
+     * Clase para el iterador
+     */
     protected class Iterador implements Iterator<E>{
         int index;
         int i;
 
+        /**
+         * Constructor que un iterador
+         */
         public Iterador(){
             if(head==-1)
                 index = 0;
@@ -35,10 +54,19 @@ public class ColaArreglo<E> extends ColeccionAbstracta<E> implements ICola<E>{
             i = 0;
         }
 
+        /**
+         * Metodo que devuelve <code>true</code> si existe un siguiente elemento en el iterador
+         * @return -- <code>true</code> si el iterador tiene un siguiente elemento
+         */
         public boolean hasNext(){
             return i!=size;
         }
 
+        /**
+         * Metodo que devuelve el siguiente objeto tipo <code>E</code> en el iterador
+         * @return <code>true</code> si el iterador tiene un siguiente elemento
+         * @throws NoSuchElementException si la iteracion no tiene más elementos
+         */
         public E next(){
             if(!hasNext())
                 throw new NoSuchElementException("La iteracion no tiene mas elementos");
@@ -111,23 +139,43 @@ public class ColaArreglo<E> extends ColeccionAbstracta<E> implements ICola<E>{
         size++;
     }
 
+   /**
+    * Añade el objeto pasado como parámetro a la cola, devolviendo <code>true</code>
+    * @param e -- Objeto a agregar
+    * @return <code>true</code> si el objeto pudo agregarse a la cola
+    */
     public boolean add(E e){
         forma(e);
         return true;
     }
 
+    /**
+    * Devuelve <code>true</code> si la cola está vacía
+    * @return <code>true</code> si la cola está vacía
+    */
     public boolean isEmpty(){
         return head == -1;
     }
 
+    /**
+    * Devuelve un iterador para la cola
+    * @return <code>Iterador</code> para la cola
+    */
     public Iterator<E> iterator(){
         return new Iterador();
     }
 
+    /**
+    * Devuelve el tamaño de la cola
+    * @return tamaño de la cola
+    */
     public int size(){
         return size;
     }
 
+    /**
+    * Metodo privado que agranda el arreglo al doble si es necesario
+    */
     private void agranda() {
         int bufferLength = buffer.length;
 

@@ -9,21 +9,21 @@ class Nodo <E>{
         this(null,datum,null);
     }
 
-    public Nodo(Nodo prev,E datum){
+    public Nodo(Nodo<E> prev,E datum){
         this(prev,datum,null);
     }
 
-    public Nodo(E datum,Nodo next){
+    public Nodo(E datum,Nodo<E> next){
         this(null,datum,next);
     }
 
-    public Nodo(Nodo prev,E datum,Nodo next){
+    public Nodo(Nodo<E> prev,E datum,Nodo<E> next){
         this.prev = prev;
         this.datum = datum;
         this.next = next;
     }
 
-    public void setPrev(Nodo prev){
+    public void setPrevious(Nodo<E> prev){
         this.prev = prev;
     }
 
@@ -31,11 +31,11 @@ class Nodo <E>{
         this.datum = datum;
     }
 
-    public void setNext(Nodo next){
+    public void setNext(Nodo<E> next){
         this.next = next;
     }
 
-    public Nodo getPrev(){
+    public Nodo getPrevious(){
         return prev;
     }
 
