@@ -1,0 +1,48 @@
+Testsuite: ed.estructuras.lineales.ListaDoblementeLigadaTest
+Tests run: 16, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0,088 sec
+------------- Standard Output ---------------
+listIteratorIndexTest
+toArrayTest
+subListTest
+listIteratorTest
+addIndex
+lastIndexOfTest
+retainAllTest
+isEmpty
+get
+iteratorTest
+size
+addAll
+remove
+indexOfTest
+removeAll
+setTest
+==============================
+Calificacion automatica: 10.769231
+==============================
+------------- ---------------- ---------------
+
+Testcase: listIteratorIndexTest took 0,004 sec
+Testcase: toArrayTest took 0,004 sec
+	FAILED
+expected:<29> but was:<null>
+junit.framework.AssertionFailedError: expected:<29> but was:<null>
+	at ed.estructuras.lineales.ListaTest.toArrayTest(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+
+Testcase: subListTest took 0 sec
+Testcase: listIteratorTest took 0,001 sec
+Testcase: addIndexTest took 0 sec
+Testcase: lastIndexOfTest took 0 sec
+Testcase: retainAllTest took 0,001 sec
+Testcase: isEmptyTest took 0,001 sec
+Testcase: getTest took 0 sec
+Testcase: iteratorTest took 0 sec
+Testcase: sizeTest took 0 sec
+Testcase: addAllTest took 0 sec
+Testcase: removeTest took 0 sec
+Testcase: indexOfTest took 0,001 sec
+Testcase: removeAll took 0 sec
+Testcase: setTest took 0 sec

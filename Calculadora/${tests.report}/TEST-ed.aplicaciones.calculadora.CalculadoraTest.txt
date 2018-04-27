@@ -1,0 +1,41 @@
+Testsuite: ed.aplicaciones.calculadora.CalculadoraTest
+Tests run: 4, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0,106 sec
+------------- Standard Output ---------------
+testPostfija()
+testInfijaASufija()
+testPrefija()
+testEvaluaInfija()
+Sufija: [4, 5, +, 2, 5, *, -]
+==============================
+Calificacion automatica: 2.5
+==============================
+------------- ---------------- ---------------
+
+Testcase: testEvaluaPostfija took 0,009 sec
+	FAILED
+Use assertEquals(expected, actual, delta) to compare floating-point numbers
+junit.framework.AssertionFailedError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
+	at ed.aplicaciones.calculadora.CalculadoraTest.testEvaluaPostfija(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+
+Testcase: testInfijaASufija took 0,004 sec
+Testcase: testEvaluaPrefija took 0 sec
+	FAILED
+Use assertEquals(expected, actual, delta) to compare floating-point numbers
+junit.framework.AssertionFailedError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
+	at ed.aplicaciones.calculadora.CalculadoraTest.testEvaluaPrefija(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+
+Testcase: textEvaluaInfija took 0,031 sec
+	FAILED
+Use assertEquals(expected, actual, delta) to compare floating-point numbers
+junit.framework.AssertionFailedError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
+	at ed.aplicaciones.calculadora.CalculadoraTest.textEvaluaInfija(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+
